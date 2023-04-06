@@ -141,6 +141,19 @@ namespace DylanRowe_RCR_SnakeGame
                         Snake[i].Y = 0;
                     }
 
+                    if (Snake[i].X == food.X && Snake[i].Y == food.Y) 
+                    {
+                        EatFood();
+                    }
+
+                    for (int j = 1; j < Snake.Count; j++) 
+                    {
+                        if (Snake[i].X == Snake[j].X && Snake[i].Y == Snake[j].Y)
+                        {
+                            GameOver();
+                        }
+                    }
+
                 }
                 else //Body Parts
                 {
@@ -195,7 +208,7 @@ namespace DylanRowe_RCR_SnakeGame
             Snake.Clear();
 
             startButton.Enabled = false;
-            snapButton.Enabled = false;
+            //snapButton.Enabled = false;
             Score = 0;
             //txtScore.Text = "Score: " + Score;
 
@@ -208,19 +221,42 @@ namespace DylanRowe_RCR_SnakeGame
                 Snake.Add(body);
             }
 
-            Circle food = new Circle { X = rand.Next(2,maxWidth), Y = rand.Next(2, maxHeight)};
+            food = new Circle { X = rand.Next(2,maxWidth), Y = rand.Next(2, maxHeight)};
 
             gameTimer.Start(); 
         }
 
         private void EatFood()
         {
+            Score += 1;
 
+            txtScore.Text = "Score: " + Score;
+
+            Circle body = new Circle
+            {
+                X = Snake[Snake.Count - 1].X,
+                Y = Snake[Snake.Count - 1].Y
+            };
+
+            Snake.Add(body);
+
+            food = new Circle { X = rand.Next(2, maxWidth), Y = rand.Next(2, maxHeight) };
         }
 
         private void GameOver()
         {
-            
+            gameTimer.Stop();
+            startButton.Enabled = true;
+            //snapButton.Enabled = true;
+
+            if (Score>highScore)
+            {
+                highScore = Score;
+
+                txtHighScore.Text = "High Score: " + Environment.NewLine + highScore;
+                txtHighScore.ForeColor = Color.Maroon;
+                //xtxtHighScore.TextAlign = ContentAlignment.MiddleCenter;
+            }
         }
 
 

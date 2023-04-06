@@ -31,11 +31,11 @@ namespace DylanRowe_RCR_SnakeGame
         {
             this.components = new System.ComponentModel.Container();
             this.startButton = new System.Windows.Forms.Button();
-            this.snapButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picCanvas = new System.Windows.Forms.PictureBox();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtScore = new System.Windows.Forms.TextBox();
+            this.txtHighScore = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).BeginInit();
             this.SuspendLayout();
@@ -43,7 +43,7 @@ namespace DylanRowe_RCR_SnakeGame
             // startButton
             // 
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startButton.Location = new System.Drawing.Point(611, 27);
+            this.startButton.Location = new System.Drawing.Point(557, 232);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(113, 56);
             this.startButton.TabIndex = 0;
@@ -51,23 +51,12 @@ namespace DylanRowe_RCR_SnakeGame
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.StartGame);
             // 
-            // snapButton
-            // 
-            this.snapButton.BackColor = System.Drawing.Color.White;
-            this.snapButton.Location = new System.Drawing.Point(611, 89);
-            this.snapButton.Name = "snapButton";
-            this.snapButton.Size = new System.Drawing.Size(113, 56);
-            this.snapButton.TabIndex = 0;
-            this.snapButton.Text = "Snap";
-            this.snapButton.UseVisualStyleBackColor = false;
-            this.snapButton.Click += new System.EventHandler(this.TakeSnapshot);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.UpArrow;
             this.pictureBox1.Image = global::DylanRowe_RCR_SnakeGame.Properties.Resources.smol_River_City_Rocketry1;
             this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.Location = new System.Drawing.Point(507, 151);
+            this.pictureBox1.Location = new System.Drawing.Point(511, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(204, 200);
             this.pictureBox1.TabIndex = 1;
@@ -87,24 +76,33 @@ namespace DylanRowe_RCR_SnakeGame
             this.gameTimer.Interval = 40;
             this.gameTimer.Tick += new System.EventHandler(this.GameTimerEvent);
             // 
-            // textBox1
+            // txtScore
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(507, 376);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "Score: ";
+            this.txtScore.Enabled = false;
+            this.txtScore.Location = new System.Drawing.Point(557, 310);
+            this.txtScore.Name = "txtScore";
+            this.txtScore.Size = new System.Drawing.Size(100, 20);
+            this.txtScore.TabIndex = 3;
+            this.txtScore.Text = "Score: ";
+            // 
+            // txtHighScore
+            // 
+            this.txtHighScore.Enabled = false;
+            this.txtHighScore.Location = new System.Drawing.Point(557, 336);
+            this.txtHighScore.Name = "txtHighScore";
+            this.txtHighScore.Size = new System.Drawing.Size(100, 20);
+            this.txtHighScore.TabIndex = 4;
+            this.txtHighScore.Text = "High Score: ";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(748, 725);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtHighScore);
+            this.Controls.Add(this.txtScore);
             this.Controls.Add(this.picCanvas);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.snapButton);
             this.Controls.Add(this.startButton);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "Form1";
@@ -121,11 +119,11 @@ namespace DylanRowe_RCR_SnakeGame
         #endregion
 
         private System.Windows.Forms.Button startButton;
-        private System.Windows.Forms.Button snapButton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox picCanvas;
         private System.Windows.Forms.Timer gameTimer;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtScore;
+        private System.Windows.Forms.TextBox txtHighScore;
     }
 }
 

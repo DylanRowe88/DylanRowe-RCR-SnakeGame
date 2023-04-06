@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DylanRowe-RCR-SnakeGame.exe" size="102368">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DylanRowe-RCR-SnakeGame.exe" size="103392">
       <assemblyIdentity name="DylanRowe-RCR-SnakeGame" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>jV5xEMsx2IW3NJjXLbyU46itwJHv2sAPShRYMJrKA+8=</dsig:DigestValue>
+        <dsig:DigestValue>ah2IkuzdlXv/gimXS+9O2wpp7FxydGo4q3IVC7WgRC4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

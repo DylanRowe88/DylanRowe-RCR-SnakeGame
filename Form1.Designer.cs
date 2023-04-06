@@ -29,40 +29,43 @@ namespace DylanRowe_RCR_SnakeGame
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            this.startButton = new System.Windows.Forms.Button();
+            this.snapButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picCanvas = new System.Windows.Forms.PictureBox();
+            this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // startButton
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(611, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 56);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startButton.Location = new System.Drawing.Point(611, 27);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(113, 56);
+            this.startButton.TabIndex = 0;
+            this.startButton.Text = "Start";
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.StartGame);
             // 
-            // button2
+            // snapButton
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(611, 89);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 56);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Stop";
-            this.button2.UseVisualStyleBackColor = false;
+            this.snapButton.BackColor = System.Drawing.Color.White;
+            this.snapButton.Location = new System.Drawing.Point(611, 89);
+            this.snapButton.Name = "snapButton";
+            this.snapButton.Size = new System.Drawing.Size(113, 56);
+            this.snapButton.TabIndex = 0;
+            this.snapButton.Text = "Snap";
+            this.snapButton.UseVisualStyleBackColor = false;
+            this.snapButton.Click += new System.EventHandler(this.TakeSnapshot);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.UpArrow;
+            this.pictureBox1.Image = global::DylanRowe_RCR_SnakeGame.Properties.Resources.smol_River_City_Rocketry1;
             this.pictureBox1.ImageLocation = "";
             this.pictureBox1.Location = new System.Drawing.Point(507, 151);
             this.pictureBox1.Name = "pictureBox1";
@@ -77,39 +80,37 @@ namespace DylanRowe_RCR_SnakeGame
             this.picCanvas.Size = new System.Drawing.Size(461, 701);
             this.picCanvas.TabIndex = 2;
             this.picCanvas.TabStop = false;
+            this.picCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.UpdatePictureBoxGraphics);
+            // 
+            // gameTimer
+            // 
+            this.gameTimer.Interval = 40;
+            this.gameTimer.Tick += new System.EventHandler(this.GameTimerEvent);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(507, 380);
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(507, 376);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(203, 20);
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "Score: 0";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(508, 406);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(203, 20);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "Score: 0";
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.Text = "Score: ";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(748, 725);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.picCanvas);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.snapButton);
+            this.Controls.Add(this.startButton);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "Form1";
             this.Text = "Snake";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyIsUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCanvas)).EndInit();
             this.ResumeLayout(false);
@@ -119,12 +120,12 @@ namespace DylanRowe_RCR_SnakeGame
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.Button snapButton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox picCanvas;
+        private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
     }
 }
 

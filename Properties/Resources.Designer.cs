@@ -63,16 +63,6 @@ namespace DylanRowe_RCR_SnakeGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap smol_River_City_Rocketry {
-            get {
-                object obj = ResourceManager.GetObject("smol River City Rocketry", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap smol_River_City_Rocketry1 {
             get {
                 object obj = ResourceManager.GetObject("smol River City Rocketry1", resourceCulture);

@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DylanRowe_RCR_SnakeGame
@@ -77,10 +72,6 @@ namespace DylanRowe_RCR_SnakeGame
             RestartGame();
         }
 
-        private void TakeSnapshot(object sender, EventArgs e)
-        {
-
-        }
 
         private void GameTimerEvent(object sender, EventArgs e)
         {
@@ -215,7 +206,7 @@ namespace DylanRowe_RCR_SnakeGame
             Circle head = new Circle { X = 10, Y = 5};
             Snake.Add(head); // adding the head part of the snake to the list
 
-            for (int i = 0; i < 10; i++) 
+            for (int i = 0; i < 3; i++) 
             {
                 Circle body = new Circle();
                 Snake.Add(body);
@@ -260,5 +251,31 @@ namespace DylanRowe_RCR_SnakeGame
         }
 
 
+    }
+}
+
+
+/*
+ * for an efficance stand point there is 2 things you could change
+ * the eating food property is pretty good, but th more efficient way is instead of creating a new point
+ * just add to food point to the top of the snake
+ * then for moving instead of looping through the whole snake
+ * add a point in front of the head
+ * delete the tail
+ */
+
+class circle : IComparable
+{
+    int x;
+
+    
+
+    public int CompareTo(object obj)
+    {
+        circle x = (circle)obj;
+        if (x.x > this.x)
+            return 1;
+        else
+            return -1;
     }
 }
